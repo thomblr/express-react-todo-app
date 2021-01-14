@@ -7,6 +7,7 @@ let Status = require('../models/status.model');
  *  - Get status by Id (/:id)
  *  - Add new status (/add)
  *  - Remove a status (/del/:id)
+ *  - Update a status: color or name (/update/:id)
  */
 
 
@@ -46,5 +47,28 @@ router.route('/add').post((req, res) => {
       .then(() => res.json('Status added!'))
       .catch(err => res.json('Error: ' + err));
 })
+
+
+/**
+ * Remove a status
+ */
+router.route('/del/:id').delete((req, res) => {
+    const _id = req.params.id;
+    Status.deleteOne({_id: _id})
+      .then(() => res.json('Status deleted!'))
+      .catch(err => res.json('Error: ' + err));
+});
+
+
+/**
+ * Update a status
+ */
+router.route('/update/:id').put((req, res) => {
+    const _id = req.params.id;
+
+    Status.findByIdAndUpdate(_id, req.body)
+      .then(() => res.json('Status updated!'))
+      .catch(err => res.json('Error: ' + err));
+});
 
 module.exports = router;
