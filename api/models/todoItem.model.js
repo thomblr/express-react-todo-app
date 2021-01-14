@@ -10,24 +10,25 @@ const todoItemSchema = new Schema({
         minlength: 3
     },
     status: {
-
+        type: Schema.Types.ObjectId,
+        ref: 'Status',
     },
-    owners: {
-
-    },
+    owners: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User',
+        }
+    ],
     deadline: {
-
-    },
-    color: {
-
+        type: Date,
     },
     group: {
-
+        type: Schema.Types.ObjectId,
+        ref: 'TodoGroup',
     },
 }, {
     timestamp: true,
 });
 
 const TodoItem = mongoose.model('TodoItem', todoItemSchema);
-
 module.exports = TodoItem;

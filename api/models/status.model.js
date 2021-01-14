@@ -2,22 +2,23 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const todoGroupSchema = new Schema({
-    name: {
+const statusSchema = new Schema({
+    value: {
         type: String,
         required: true,
         trim: true,
-        minlength: 3
+        minlength: 3,
+        lowercase: true,
     },
     color: {
         type: String,
-        required: true,
+        reqired: true,
         trim: true,
+        lowercase: true,
         minlength: 7,
         maxlength: 7,
-        default: '#b8b8b8',
-    }
+    },
 });
 
-const TodoGroup = mongoose.model('TodoGroup', todoGroupSchema);
-module.exports = TodoGroup;
+const Status = mongoose.model('Status', statusSchema);
+module.exports = Status;
