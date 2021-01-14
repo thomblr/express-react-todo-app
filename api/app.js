@@ -31,7 +31,10 @@ connection.once('open', () => {
 *   Handling Routes
 */
 const userRoute = require('./routes/users');
+const statusRoute = require('./routes/status');
+
 app.use('/api/users', userRoute);
+app.use('/api/status', statusRoute);
 
 
 /*
