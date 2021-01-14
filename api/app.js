@@ -18,7 +18,8 @@ const uri = process.env.URI;
 mongoose.connect(uri, {
     useNewUrlParser: true, 
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 const connection = mongoose.connection;
@@ -32,9 +33,13 @@ connection.once('open', () => {
 */
 const userRoute = require('./routes/users');
 const statusRoute = require('./routes/status');
+const todoItemRoute = require('./routes/todoItem');
+const todoGroupRoute = require('./routes/todoGroup');
 
 app.use('/api/users', userRoute);
 app.use('/api/status', statusRoute);
+app.use('/api/todoitems', todoItemRoute);
+app.use('/api/todogroups', todoGroupRoute);
 
 
 /*
