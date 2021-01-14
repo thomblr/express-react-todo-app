@@ -33,3 +33,7 @@
 ### TodoItem
 
 - Get all items (/)
+- Get all items from a group (/g/:id)
+- Add new item (/add)
+- Remove item (/del/:id)
+- Update item (/update/:id)
