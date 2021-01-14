@@ -46,7 +46,7 @@ router.route('/n/:name').get((req, res) => {
  * Add a new group
  */
 router.route('/add').post((req, res) => {
-    const newGroup = new Group({
+    const newGroup = new TodoGroup({
         name: req.body.name,
         color: req.body.color
     });
